@@ -1,0 +1,48 @@
+<h1>Rentals list</h1>
+
+<p>
+  {{link-to "New Rental" "rentals.new" }}
+</p>
+
+{{#if model.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Daily Rate
+        </th>
+        <th colspan="3">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |rental|}}
+        <tr>
+          <td>
+            {{rental.name}}
+          </td>
+          <td>
+            {{rental.daily_rate}}
+          </td>
+          <td>
+            {{link-to "Edit" "rentals.edit" rental}}
+          </td>
+          <td>
+            {{link-to "Show" "rentals.show" rental}}
+          </td>
+          <td>
+            <a href="#" {{action "remove" rental}}>Remove</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Rentals found
+  </p>
+{{/if}}

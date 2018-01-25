@@ -1,0 +1,6 @@
+{
+  "name": "booking-sync-client",
+  "dependencies": {
+    "bootstrap-datepicker": "^1.7.1"
+  }
+}

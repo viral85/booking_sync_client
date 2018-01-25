@@ -1,0 +1,107 @@
+<!-- <p>
+  {{link-to "Rental list" "rentals.index" }}
+</p> -->
+
+<h1>Rental show</h1>
+
+<p>
+  <strong>Name:</strong>
+  <span>{{model.name}}</span>
+</p>
+<p>
+  <strong>Daily Rate:</strong>
+  <span>{{model.daily_rate}}</span>
+</p>
+
+<h2>Bookings</h2>
+{{#if model.bookings.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Start at
+        </th>
+        <th>
+          End at
+        </th>
+        <th>
+          Price
+        </th>
+        <th>
+          Client email
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.bookings as |booking|}}
+        <tr>
+          <td>
+            {{booking.startAt}}
+          </td>
+          <td>
+            {{booking.endAt}}
+          </td>
+          <td>
+            {{booking.price}}
+          </td>
+          <td>
+            {{booking.clientEmail}}
+          </td>
+          <!-- <td>
+            {{booking.rental.name}}
+          </td> -->
+
+          <!-- <td>
+            {{link-to "Edit" "bookings.edit" booking}}
+          </td>
+          <td>
+            {{link-to "Show" "bookings.show" booking}}
+          </td> -->
+          <!-- <td>
+            <a href="#" {{action "remove" booking}}>Remove</a>
+          </td> -->
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Bookings found
+  </p>
+{{/if}}
+
+<h2>Add New Booking</h2>
+<form {{action "add_booking" booking on="submit"}}>
+  <div>
+    <label>
+      Start at
+      <!-- {{input type="text" value=model.startAt}} -->
+      {{bootstrap-datepicker value=booking.startAt  class="form-control" format='mm/dd/yyyy'}}
+      {{model.startAt}}
+    </label>
+  </div>
+  <div>
+    <label>
+      End at
+      <!-- {{input type="text" value=model.endAt}} -->
+      {{bootstrap-datepicker value=booking.endAt class="form-control" format='mm/dd/yyyy'}}
+      {{model.endAt}}
+    </label>
+  </div>
+  <div>
+    <label>
+      Price
+      {{input type="text" value=booking.price}}{{model.daily_rate}}(Daily Rate) * {{booking.duration}}(Days)
+    </label>
+  </div>
+  <div>
+    <label>
+      Client email
+      {{input type="text" value=booking.clientEmail}}
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Save">
+  </div>
+</form>

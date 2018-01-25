@@ -1,0 +1,33 @@
+<form {{action "save" on="submit"}}>
+  <div>
+    <label>
+      Start at
+      <!-- {{input type="text" value=model.startAt}} -->
+      {{bootstrap-datepicker value=model.startAt changeDate='changeDateAction' class="form-control" format='mm/dd/yyyy'}}
+      {{model.startAt}}
+    </label>
+  </div>
+  <div>
+    <label>
+      End at
+      <!-- {{input type="text" value=model.endAt}} -->
+      {{bootstrap-datepicker value=model.endAt changeDate='changeDateAction' class="form-control" format='mm/dd/yyyy'}}
+      {{model.endAt}}
+    </label>
+  </div>
+  <div>
+    <label>
+      Price
+      {{input type="text" value=model.price}}{{model.rental.daily_rate}}(Daily Rate) * {{model.duration}}(Days)={{model.new_price}}
+    </label>
+  </div>
+  <div>
+    <label>
+      Client email
+      {{input type="text" value=model.clientEmail}}
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Save">
+  </div>
+</form>

@@ -1,0 +1,66 @@
+<h1>Bookings list</h1>
+
+<p>
+  {{link-to "New Booking" "bookings.new" }}
+</p>
+
+{{#if model.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Start at
+        </th>
+        <th>
+          End at
+        </th>
+        <th>
+          Price
+        </th>
+        <th>
+          Client email
+        </th>
+        <th>
+          Rental
+        </th>
+        <th colspan="3">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |booking|}}
+        <tr>
+          <td>
+            {{booking.startAt}}
+          </td>
+          <td>
+            {{booking.endAt}}
+          </td>
+          <td>
+            {{booking.price}}
+          </td>
+          <td>
+            {{booking.clientEmail}}
+          </td>
+          <td>
+            {{booking.rental.name}}
+          </td>
+          <td>
+            {{link-to "Edit" "bookings.edit" booking}}
+          </td>
+          <td>
+            {{link-to "Show" "bookings.show" booking}}
+          </td>
+          <td>
+            <a href="#" {{action "remove" booking}}>Remove</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Bookings found
+  </p>
+{{/if}}

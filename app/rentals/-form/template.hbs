@@ -1,0 +1,18 @@
+<form {{action "save" on="submit"}}>
+  <div>
+    <label>
+      Name
+      {{input type="text" value=model.name}}
+    </label>
+  </div>
+  <br>
+  <div>
+    <label>
+      Daily Rate
+      {{input type="text" value=model.daily_rate}}
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Save">
+  </div>
+</form>
